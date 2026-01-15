@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Instagram, Github, ArrowUpRight, Layout, Server, Database, X, CheckCircle2, Award, Zap, PenTool, Code, Rocket, ChevronUp, Camera, Globe, Heart, Sparkles } from 'lucide-react';
+import { 
+  Instagram, Github, ArrowUpRight, Layout, Server, Database, X, 
+  CheckCircle2, Award, Zap, PenTool, Code, Rocket, ChevronUp, 
+  Camera, Globe, Heart, Sparkles, Menu 
+} from 'lucide-react';
 import { misProyectos } from './data';
 
 const Marquee = ({ text }) => {
@@ -19,15 +23,126 @@ const Marquee = ({ text }) => {
   );
 };
 
+// COMPONENTE DE SERVICIOS (PRECIOS)
+const ServiciosPrecios = () => {
+  const packs = [
+    {
+      title: "Identidad Social",
+      price: "80",
+      unit: "€",
+      desc: "Perfecto para renovar la imagen de tu local o redes.",
+      features: ["Menú/Carta Digital QR", "6 Flyers para Instagram", "10 Plantillas de Stories"],
+      color: "#E5E5E5"
+    },
+    {
+      title: "Web Pro + IA",
+      price: "250",
+      unit: "€",
+      desc: "Tu negocio abierto 24/7 con asistencia inteligente.",
+      features: ["Web React a Medida", "Asistente Virtual (IA)", "Dominio y Hosting (1 año)", "Optimizado para Móvil"],
+      color: "#FF007A",
+      popular: true
+    },
+    {
+      title: "Mantenimiento",
+      price: "30",
+      unit: "€/mes",
+      desc: "Tranquilidad total y actualizaciones constantes.",
+      features: ["Cambios de Precios/Fotos", "Copias de Seguridad", "Soporte Prioritario"],
+      color: "#E5E5E5"
+    }
+  ];
+
+  return (
+    <section id="inversion" className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-t border-white/5 relative z-10">
+      <h2 className="text-4xl font-black uppercase tracking-tighter mb-20 flex items-center gap-4">
+        <span className="text-[#FF007A]">05/</span> Inversión
+      </h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {packs.map((pack, index) => (
+          <motion.div 
+            key={index}
+            whileHover={{ y: -10 }}
+            className={`p-10 border ${pack.popular ? 'border-[#FF007A]' : 'border-white/10'} bg-[#111] relative overflow-hidden group shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)]`}
+          >
+            {pack.popular && (
+              <div className="absolute top-0 right-0 bg-[#FF007A] text-black text-[10px] font-black px-4 py-1 uppercase tracking-widest">
+                Most Popular
+              </div>
+            )}
+            
+            <h3 className="text-sm font-black uppercase tracking-[0.2em] mb-2" style={{ color: pack.color }}>
+              {pack.title}
+            </h3>
+            
+            <div className="flex items-baseline gap-2 mb-6">
+              <span className="text-5xl font-black tracking-tighter">{pack.price}</span>
+              <span className="text-xs font-bold text-slate-500 uppercase">{pack.unit}</span>
+            </div>
+
+            <p className="text-sm text-slate-400 font-light leading-relaxed mb-8 h-12">
+              {pack.desc}
+            </p>
+
+            <ul className="space-y-4 mb-10 border-t border-white/5 pt-8">
+              {pack.features.map((feat, i) => (
+                <li key={i} className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-tight text-slate-300">
+                  <CheckCircle2 size={14} className="text-[#FF007A]" /> {feat}
+                </li>
+              ))}
+            </ul>
+
+            <a 
+              href="https://wa.me/TUNUMERO" 
+              target="_blank" 
+              rel="noreferrer"
+              className={`w-full py-4 flex items-center justify-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] transition-all ${pack.popular ? 'bg-[#FF007A] text-black hover:bg-white' : 'bg-white/5 text-white hover:bg-white hover:text-black'}`}
+            >
+              Consultar <ArrowUpRight size={16} />
+            </a>
+          </motion.div>
+        ))}
+      </div>
+      
+      <p className="text-[10px] text-slate-500 uppercase font-bold tracking-[0.2em] mt-12 text-center max-w-2xl mx-auto leading-relaxed">
+        * Precios expresados en Euros (€). <br className="md:hidden"/>
+        Para clientes de Argentina/Exterior: Pagos en USD o Pesos AR al cambio del día.
+      </p>
+    </section>
+  );
+};
+
 function App() {
   const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  
+  // ESTADO PARA EL MENÚ
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 400);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
+  };
+
+  const menuItems = [
+    { label: "About Me", id: "about" },
+    { label: "Proceso", id: "proceso" },
+    { label: "Servicios", id: "servicios" },
+    { label: "Stack", id: "stack" },
+    { label: "Inversión", id: "inversion" },
+    { label: "Work", id: "work" },
+    { label: "Contacto", id: "contacto" },
+  ];
 
   const workflow = [
     { step: "01", title: "Estrategia", icon: <Zap size={20} />, desc: "Analizo objetivos para crear una base sólida." },
@@ -62,10 +177,8 @@ function App() {
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-[#E5E5E5] font-sans selection:bg-white selection:text-[#FF007A] overflow-x-hidden relative">
       
-      {/* EFECTO DE RUIDO/TEXTURA */}
       <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
-      {/* BOTÓN IR ARRIBA */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
@@ -78,18 +191,62 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* NAV */}
       <nav className="max-w-7xl mx-auto p-6 md:p-10 flex justify-between items-center relative z-50">
-        <div className="text-xl font-black uppercase tracking-tighter">
-          Sofía Daniele<span className="text-[#FF007A]">.</span>
+        {/* LOGO ACTUALIZADO CON PROYECTO 25 */}
+        <div className="flex flex-col relative z-50 mix-blend-difference text-white leading-none select-none">
+          <div className="text-2xl md:text-3xl font-black uppercase tracking-tighter">
+            Proyecto 25<span className="text-[#FF007A]">.</span>
+          </div>
+          <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-slate-300 ml-1">
+            by Sofía Daniele
+          </div>
         </div>
-        <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
-          <a href="https://github.com/Sodaniele" target="_blank" rel="noreferrer" className="hover:text-[#FF007A] transition-colors">Github</a>
-          <a href="https://www.instagram.com/proyectoveinticinco" target="_blank" rel="noreferrer" className="hover:text-[#FF007A] transition-colors">Instagram</a>
+
+        <div className="flex items-center gap-6 relative z-50">
+          <div className="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-[0.2em] mix-blend-difference text-white">
+            <a href="https://github.com/Sodaniele" target="_blank" rel="noreferrer" className="hover:text-[#FF007A] transition-colors">Github</a>
+            <a href="https://www.instagram.com/proyectoveinticinco" target="_blank" rel="noreferrer" className="hover:text-[#FF007A] transition-colors">Instagram</a>
+          </div>
+
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="group flex items-center gap-2 text-white mix-blend-difference hover:text-[#FF007A] transition-colors cursor-pointer"
+          >
+            <span className="text-[10px] font-black uppercase tracking-widest hidden sm:block">
+               {isMenuOpen ? "Cerrar" : "Menú"}
+            </span>
+            {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
+          </button>
         </div>
+
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: "-100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: "-100%" }}
+              transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+              className="fixed inset-0 bg-[#0A0A0A] z-40 flex flex-col justify-center items-center"
+            >
+              <div className="flex flex-col gap-4 text-center">
+                {menuItems.map((item, index) => (
+                  <motion.button
+                    key={item.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * index }}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 hover:from-[#FF007A] hover:to-[#FF4D94] transition-all cursor-pointer"
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
-      {/* HERO */}
       <header className="max-w-7xl mx-auto px-6 md:px-10 py-20 relative z-10 text-center md:text-left">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <h1 className="text-[14vw] md:text-[9vw] font-black uppercase leading-[0.8] tracking-tighter mb-16">
@@ -101,8 +258,7 @@ function App() {
 
       <Marquee text=" • DISPONIBLE • ESTUDIANTE DAW • DISEÑO UI • FULLSTACK • CREATIVIDAD • " />
 
-      {/* SECCIÓN ABOUT ME */}
-      <section className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-b border-white/5 relative z-10">
+      <section id="about" className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-b border-white/5 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-4 text-[#FF007A] font-black uppercase tracking-widest text-sm italic">/ About Me</div>
           <div className="md:col-span-8 space-y-8">
@@ -117,8 +273,7 @@ function App() {
         </div>
       </section>
 
-      {/* METODOLOGÍA */}
-      <section className="max-w-7xl mx-auto px-6 md:px-10 py-32 relative z-10">
+      <section id="proceso" className="max-w-7xl mx-auto px-6 md:px-10 py-32 relative z-10">
         <h2 className="text-4xl font-black uppercase tracking-tighter mb-20 flex items-center gap-4">
            <span className="text-[#FF007A]">01/</span> Proceso
         </h2>
@@ -133,8 +288,7 @@ function App() {
         </div>
       </section>
 
-      {/* SERVICIOS + CREDENTIALS */}
-      <section className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-t border-white/5 grid grid-cols-1 lg:grid-cols-12 gap-20 relative z-10">
+      <section id="servicios" className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-t border-white/5 grid grid-cols-1 lg:grid-cols-12 gap-20 relative z-10">
         <div className="lg:col-span-8">
           <h2 className="text-4xl font-black uppercase tracking-tighter mb-12 flex items-center gap-4">
              <span className="text-[#FF007A]">02/</span> Servicios
@@ -164,7 +318,6 @@ function App() {
         </div>
       </section>
 
-      {/* MÁS ALLÁ DEL CÓDIGO (MODIFICADO) */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-t border-white/5 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <div>
@@ -193,8 +346,7 @@ function App() {
         </div>
       </section>
 
-      {/* STACK */}
-      <section className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-t border-white/5 relative z-10">
+      <section id="stack" className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-t border-white/5 relative z-10">
         <h2 className="text-4xl font-black uppercase tracking-tighter mb-12 flex items-center gap-4">
              <span className="text-[#FF007A]">04/</span> Stack
         </h2>
@@ -211,8 +363,9 @@ function App() {
         </div>
       </section>
 
-      {/* PROYECTOS */}
-      <main className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-t border-white/5 relative z-10">
+      <ServiciosPrecios />
+
+      <main id="work" className="max-w-7xl mx-auto px-6 md:px-10 py-32 border-t border-white/5 relative z-10">
         <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter italic mb-16">Work</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {misProyectos.map((proyecto) => (
@@ -228,8 +381,7 @@ function App() {
         </div>
       </main>
 
-      {/* CONTACTO */}
-      <section className="bg-[#FF007A] text-black px-6 md:px-10 py-32 relative z-40">
+      <section id="contacto" className="bg-[#FF007A] text-black px-6 md:px-10 py-32 relative z-40">
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
           <h2 className="text-[12vw] md:text-[8vw] font-black uppercase leading-none tracking-tighter mb-12 italic">LET'S <br /> CONNECT</h2>
           <a href={mailtoLink} className="group text-xl md:text-5xl font-black uppercase tracking-tighter border-b-4 md:border-b-8 border-black hover:text-white hover:border-white transition-all flex items-center gap-4 pb-2 text-center">
@@ -238,7 +390,6 @@ function App() {
         </div>
       </section>
 
-      {/* MODAL */}
       <AnimatePresence>
         {proyectoSeleccionado && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setProyectoSeleccionado(null)} className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out">
