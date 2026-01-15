@@ -94,7 +94,7 @@ const ServiciosPrecios = () => {
             </ul>
 
             <a 
-              href="https://wa.me/TUNUMERO" 
+              href="https://wa.me/+34603273763" 
               target="_blank" 
               rel="noreferrer"
               className={`w-full py-4 flex items-center justify-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] transition-all ${pack.popular ? 'bg-[#FF007A] text-black hover:bg-white' : 'bg-white/5 text-white hover:bg-white hover:text-black'}`}
@@ -205,7 +205,7 @@ function App() {
         <div className="flex items-center gap-6 relative z-50">
           <div className="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-[0.2em] mix-blend-difference text-white">
             <a href="https://github.com/Sodaniele" target="_blank" rel="noreferrer" className="hover:text-[#FF007A] transition-colors">Github</a>
-            <a href="https://www.instagram.com/proyectoveinticinco" target="_blank" rel="noreferrer" className="hover:text-[#FF007A] transition-colors">Instagram</a>
+            <a href="https://www.instagram.com/proyectoveinticinco?igsh=dWdxdGlwNW14dDdj&utm_source=qr" target="_blank" rel="noreferrer" className="hover:text-[#FF007A] transition-colors">Instagram</a>
           </div>
 
           <button 
