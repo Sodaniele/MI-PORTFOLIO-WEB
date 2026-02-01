@@ -142,7 +142,7 @@ idea:`;
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-[10vw] md:text-[8vw] leading-none tracking-tight font-light text-[#262626]/50 italic"
                 >
-                    Engineer
+                    Developer
                 </motion.h1>
             </div>
 
