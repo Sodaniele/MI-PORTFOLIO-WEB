@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* REGLAS GLOBALES */
+body {
+  background-color: #FAFAFA; /* Usa el color 'canvas' que definimos */
+  color: #18181B;            /* Usa el color 'ink' */
+  font-family: 'Inter', sans-serif;
+  
+  /* Esto hace que la tipografía se vea más nítida y fina (estilo Apple) */
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* DETALLE DE LUJO: */
+/* Cuando seleccionas texto, se ve negro con letras blancas (muy elegante) */
+::selection {
+  background-color: #18181B;
+  color: #FAFAFA;
+}
