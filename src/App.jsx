@@ -142,7 +142,7 @@ idea:`;
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-[10vw] md:text-[8vw] leading-none tracking-tight font-light text-[#262626]/50 italic"
                 >
-                    Developer
+                    Engineer
                 </motion.h1>
             </div>
 
@@ -181,7 +181,7 @@ idea:`;
         </div>
       </header>
 
-      {/* --- WORK SECTION --- */}
+      {/* --- WORK SECTION (MODIFICADA: DIVIDIDA EN 2) --- */}
       <section id="work" className="py-32 px-6 md:px-20 max-w-[1600px] mx-auto z-20 relative border-t border-[#262626]/10">
         
         {/* PARTE 1: PROYECTO DESTACADO (AccesoBarrio) */}
