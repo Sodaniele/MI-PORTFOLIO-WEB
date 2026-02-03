@@ -79,7 +79,6 @@ function App() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
 
-  // --- CONFIGURACIÓN DE LA PLANTILLA DE EMAIL ---
   const emailSubject = "Consulta sobre tus servicios";
   const emailBody = `Hola! Estoy buscando informacion sobre tus servicios, me gustaria contactar una cita o una call por teams, te dejo mi contact:
 
@@ -147,27 +146,42 @@ idea:`;
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-[13vw] md:text-[8vw] leading-[0.9] md:leading-none tracking-tight font-light text-[#262626]/50 italic"
                 >
-                    Developer
+                   Developer
                 </motion.h1>
             </div>
 
-            {/* BIO / DESCRIPCIÓN */}
+            {/* BIO / DESCRIPCIÓN CON FOTO INTEGRADA */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-l-2 border-[#262626]/20 pl-6 md:pl-0 md:border-l-0"
             >
-                <div className="max-w-lg md:ml-auto md:mr-32">
-                    <p className="text-lg md:text-xl font-light leading-relaxed text-[#262626]">
-                       Fusionando la lógica del código con la sensibilidad del diseño. Construyo experiencias digitales que no solo funcionan, sino que se <span className="italic font-medium">sienten.</span>
-                    </p>
-                    <p className="mt-4 text-xs md:text-sm font-mono text-[#262626]/60 uppercase tracking-wider leading-relaxed">
-                       Front End Developer | React.js Specialist | JavaScript (ES6+) | TypeScript | Tailwind CSS | Responsive Design | UI/UX
-                    </p>
+                {/* BLOQUE FOTO + TEXTO */}
+                <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center md:ml-auto md:mr-12 max-w-4xl">
+                    
+                    {/* --- FOTO MAS GRANDE --- */}
+                    <div className="w-32 h-32 md:w-48 md:h-48 shrink-0 rounded-2xl overflow-hidden border border-[#262626]/10 shadow-lg">
+                        <img 
+                            src="/sofia.png" 
+                            alt="Sofia Daniele" 
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                        />
+                    </div>
+                    {/* ------------------------- */}
+
+                    <div className="max-w-lg">
+                        <p className="text-lg md:text-xl font-light leading-relaxed text-[#262626]">
+                           Fusionando la lógica del código con la sensibilidad del diseño. Construyo experiencias digitales que no solo funcionan, sino que se <span className="italic font-medium">sienten.</span>
+                        </p>
+                        <p className="mt-4 text-xs md:text-sm font-mono text-[#262626]/60 uppercase tracking-wider leading-relaxed">
+                           Front End Developer | React.js Specialist | JavaScript (ES6+) | TypeScript | Tailwind CSS | Responsive Design | UI/UX
+                        </p>
+                    </div>
                 </div>
 
-                <div className="inline-flex items-center gap-3 border border-[#262626]/20 px-4 py-2 rounded-full bg-[#262626]/5 backdrop-blur-sm">
+                {/* Badge Status */}
+                <div className="inline-flex items-center gap-3 border border-[#262626]/20 px-4 py-2 rounded-full bg-[#262626]/5 backdrop-blur-sm self-start md:self-end">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#262626] opacity-30"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-[#262626]"></span>
@@ -337,7 +351,6 @@ idea:`;
                     <Linkedin size={20} />
                 </a>
 
-                {/* --- TAMBIÉN APLICAMOS LA PLANTILLA AL ICONO DE MAIL --- */}
                 <a 
                   href={mailtoLink}
                   className="w-12 h-12 rounded-full border border-[#DBD4D3]/20 flex items-center justify-center text-[#DBD4D3] hover:bg-[#DBD4D3] hover:text-[#262626] transition-all duration-300 hover:scale-110"
