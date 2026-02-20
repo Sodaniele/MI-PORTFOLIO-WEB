@@ -366,7 +366,7 @@ idea:`;
                     {/* La Pantalla (donde va el vídeo) */}
                     <div className="w-full h-full bg-[#EAE8E4] rounded-[2rem] overflow-hidden relative">
                         <video 
-                            src="public/video-invitacion.mp4" 
+                            src="/video-invitacion.mp4" 
                             autoPlay 
                             loop 
                             muted 
