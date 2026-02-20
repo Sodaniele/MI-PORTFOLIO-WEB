@@ -104,6 +104,7 @@ idea:`;
         </div>
         <div className="flex flex-col items-end gap-1 md:gap-2 text-[10px] uppercase tracking-widest font-mono text-[#262626]/70">
             <a href="#work" className="hover:text-[#262626] font-bold transition-all p-1">Selected Work</a>
+            <a href="#digital-invites" className="hover:text-[#262626] font-bold transition-all p-1">Event Experiences</a>
             <a href="#services" className="hover:text-[#262626] font-bold transition-all p-1">Services</a>
             <a href={mailtoLink} className="hover:text-[#262626] font-bold transition-all p-1">Contact</a>
         </div>
@@ -146,7 +147,7 @@ idea:`;
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-[13vw] md:text-[8vw] leading-[0.9] md:leading-none tracking-tight font-light text-[#262626]/50 italic"
                 >
-                   Developer
+                    Developer
                 </motion.h1>
             </div>
 
@@ -201,7 +202,8 @@ idea:`;
       </header>
 
       {/* --- WORK SECTION --- */}
-      <section id="work" className="py-20 md:py-32 px-6 md:px-20 max-w-[1600px] mx-auto z-20 relative border-t border-[#262626]/10">
+      {/* CAMBIO: Reducido el padding bottom (pb-12) para acercar la siguiente sección */}
+      <section id="work" className="pt-20 md:pt-32 pb-12 md:pb-16 px-6 md:px-20 max-w-[1600px] mx-auto z-20 relative border-t border-[#262626]/10">
         
         {/* PARTE 1: PROYECTO DESTACADO (AccesoBarrio) */}
         <div className="mb-24 md:mb-32">
@@ -294,10 +296,111 @@ idea:`;
         </div>
       </section>
 
+      {/* ======================================================== */}
+      {/* --- NUEVA SECCIÓN: INVITACIONES INTERACTIVAS --- */}
+      {/* ======================================================== */}
+      {/* CAMBIO: Eliminada la clase border-t border-[#262626]/10 */}
+      <section id="digital-invites" className="pt-12 md:pt-16 pb-20 md:pb-32 px-6 md:px-20 max-w-[1600px] mx-auto z-20 relative">
+        
+        <div className="flex justify-between items-baseline mb-16 md:mb-24">
+            <h2 className="text-sm font-mono text-[#262626]/60 uppercase tracking-widest">(03) — Digital Event Experiences</h2>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+            
+            {/* --- TEXTO Y EXPLICACIÓN --- */}
+            <div className="w-full lg:w-1/2 flex flex-col items-start">
+                <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 border border-[#262626]/20 rounded-full bg-[#262626]/5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#262626] animate-pulse"></span>
+                    <span className="text-[10px] uppercase tracking-widest font-mono text-[#262626]">Premium Service</span>
+                </div>
+                
+                <h3 className="text-4xl md:text-6xl font-light text-[#262626] mb-8 tracking-tight leading-tight">
+                    Redefiniendo la <br className="hidden md:block" />
+                    <span className="italic font-medium">invitación tradicional.</span>
+                </h3>
+                
+                <p className="text-lg md:text-xl text-[#262626]/80 font-light leading-relaxed mb-10">
+                    Diseño y desarrollo <span className="font-medium">Bespoke Digital Invitations</span> para bodas y eventos exclusivos. No son simples PDFs o imágenes estáticas, son aplicaciones web interactivas diseñadas con una filosofía <span className="italic">Mobile-First</span>.
+                </p>
+
+                <ul className="flex flex-col gap-5 mb-12 font-mono text-xs md:text-sm text-[#262626]/70 uppercase tracking-wider">
+                    <li className="flex items-center gap-4">
+                        <div className="w-8 h-8 rounded-full border border-[#262626]/20 flex items-center justify-center shrink-0">1</div> 
+                        Confirmación de asistencia (RSVP) vinculada a base de datos.
+                    </li>
+                    <li className="flex items-center gap-4">
+                        <div className="w-8 h-8 rounded-full border border-[#262626]/20 flex items-center justify-center shrink-0">2</div> 
+                        Integración interactiva de mapas y geolocalización.
+                    </li>
+                    <li className="flex items-center gap-4">
+                        <div className="w-8 h-8 rounded-full border border-[#262626]/20 flex items-center justify-center shrink-0">3</div> 
+                        Cuenta regresiva, música de fondo y mesa de regalos.
+                    </li>
+                    <li className="flex items-center gap-4">
+                        <div className="w-8 h-8 rounded-full border border-[#262626]/20 flex items-center justify-center shrink-0">4</div> 
+                        Animaciones fluidas y diseño UI/UX de alta conversión.
+                    </li>
+                </ul>
+
+                <a 
+                    href={mailtoLink} 
+                    className="inline-flex items-center gap-4 border border-[#262626] px-8 py-4 rounded-full text-[#262626] hover:bg-[#262626] hover:text-[#EAE8E4] transition-all duration-300 group"
+                >
+                    <span className="text-sm font-mono uppercase tracking-widest">Crear mi invitación</span>
+                    <MoveRight size={18} className="group-hover:translate-x-2 transition-transform" />
+                </a>
+            </div>
+
+            {/* --- VIDEO / MOCKUP DEL MÓVIL --- */}
+            <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end">
+                
+                {/* Marco simulando un iPhone minimalista */}
+                <div className="relative w-[280px] h-[580px] md:w-[320px] md:h-[650px] bg-[#262626] rounded-[2.5rem] p-3 shadow-2xl border border-[#262626]/20 hover:-translate-y-4 transition-transform duration-700">
+                    
+                    {/* El "Notch" o cámara del móvil arriba */}
+                    <div className="absolute top-0 inset-x-0 h-6 flex justify-center mt-4 z-20">
+                        <div className="w-20 h-5 bg-[#262626] rounded-full"></div>
+                    </div>
+
+                    {/* La Pantalla (donde va el vídeo) */}
+                    <div className="w-full h-full bg-[#EAE8E4] rounded-[2rem] overflow-hidden relative">
+                        <video 
+                            src="public/video-invitacion.mp4" 
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline
+                            className="w-full h-full object-cover"
+                        ></video>
+                    </div>
+                </div>
+
+                {/* Elemento decorativo flotante (Para darle un toque "Tech") */}
+                <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    className="absolute bottom-10 -left-4 md:left-10 bg-[#EAE8E4] p-4 rounded-2xl border border-[#262626]/10 shadow-xl hidden sm:flex items-center gap-4 z-30"
+                >
+                    <div className="w-12 h-12 rounded-full bg-[#262626] flex items-center justify-center text-[#EAE8E4]">
+                        <MapPin size={20} />
+                    </div>
+                    <div>
+                        <p className="text-[10px] font-mono uppercase text-[#262626]/60 tracking-widest">Live Location</p>
+                        <p className="text-sm font-medium text-[#262626]">Finca Los Olivos</p>
+                    </div>
+                </motion.div>
+
+            </div>
+        </div>
+      </section>
+      {/* ======================================================== */}
+
       {/* --- SERVICES SECTION --- */}
       <section id="services" className="py-20 z-20 relative border-t border-[#262626]/10">
         <div className="px-6 md:px-20 max-w-[1600px] mx-auto flex justify-between items-baseline mb-16">
-            <h2 className="text-sm font-mono text-[#262626]/60 uppercase tracking-widest">(03) — Expertise</h2>
+            <h2 className="text-sm font-mono text-[#262626]/60 uppercase tracking-widest">(04) — Expertise</h2>
             <div className="hidden md:block text-[10px] font-mono text-[#262626]/60 uppercase">
                 Hover to stop
             </div>
