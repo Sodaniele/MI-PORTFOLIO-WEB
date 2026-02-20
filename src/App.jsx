@@ -4,6 +4,7 @@ import {
   ArrowUpRight, MoveRight, ArrowDown, Github, Instagram, Linkedin, Mail, MapPin 
 } from 'lucide-react';
 import { misProyectos } from './data';
+import Invitaciones from './Invitaciones'; // <-- IMPORTAMOS LA NUEVA PÁGINA
 
 // --- CURSOR (Invertido para fondo claro - Desactivado en móvil) ---
 const CustomCursor = () => {
@@ -76,6 +77,14 @@ const ExpertiseWheel = () => {
 };
 
 function App() {
+  // --- SISTEMA DE RUTAS SIMPLE ---
+  // Si la URL es /invitaciones, muestra la nueva página de ventas
+  const path = window.location.pathname;
+  if (path === '/invitaciones') {
+    return <Invitaciones />;
+  }
+
+  // SI NO, CARGA TU PORTFOLIO NORMAL (Lo de abajo)
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
 
@@ -202,7 +211,6 @@ idea:`;
       </header>
 
       {/* --- WORK SECTION --- */}
-      {/* CAMBIO: Reducido el padding bottom (pb-12) para acercar la siguiente sección */}
       <section id="work" className="pt-20 md:pt-32 pb-12 md:pb-16 px-6 md:px-20 max-w-[1600px] mx-auto z-20 relative border-t border-[#262626]/10">
         
         {/* PARTE 1: PROYECTO DESTACADO (AccesoBarrio) */}
@@ -299,7 +307,6 @@ idea:`;
       {/* ======================================================== */}
       {/* --- NUEVA SECCIÓN: INVITACIONES INTERACTIVAS --- */}
       {/* ======================================================== */}
-      {/* CAMBIO: Eliminada la clase border-t border-[#262626]/10 */}
       <section id="digital-invites" className="pt-12 md:pt-16 pb-20 md:pb-32 px-6 md:px-20 max-w-[1600px] mx-auto z-20 relative">
         
         <div className="flex justify-between items-baseline mb-16 md:mb-24">
@@ -320,34 +327,46 @@ idea:`;
                     <span className="italic font-medium">invitación tradicional.</span>
                 </h3>
                 
-                <p className="text-lg md:text-xl text-[#262626]/80 font-light leading-relaxed mb-10">
+                <p className="text-lg md:text-xl text-[#262626]/80 font-light leading-relaxed mb-8">
                     Diseño y desarrollo <span className="font-medium">Bespoke Digital Invitations</span> para bodas y eventos exclusivos. No son simples PDFs o imágenes estáticas, son aplicaciones web interactivas diseñadas con una filosofía <span className="italic">Mobile-First</span>.
                 </p>
 
-                <ul className="flex flex-col gap-5 mb-12 font-mono text-xs md:text-sm text-[#262626]/70 uppercase tracking-wider">
-                    <li className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-full border border-[#262626]/20 flex items-center justify-center shrink-0">1</div> 
-                        Confirmación de asistencia (RSVP) vinculada a base de datos.
-                    </li>
-                    <li className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-full border border-[#262626]/20 flex items-center justify-center shrink-0">2</div> 
-                        Integración interactiva de mapas y geolocalización.
-                    </li>
-                    <li className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-full border border-[#262626]/20 flex items-center justify-center shrink-0">3</div> 
-                        Cuenta regresiva, música de fondo y mesa de regalos.
-                    </li>
-                    <li className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-full border border-[#262626]/20 flex items-center justify-center shrink-0">4</div> 
-                        Animaciones fluidas y diseño UI/UX de alta conversión.
-                    </li>
-                </ul>
+                {/* --- NUEVO TEXTO PERSUASIVO (Sustituye a la lista) --- */}
+                <div className="mb-10 p-6 bg-[#262626]/5 border border-[#262626]/10 rounded-2xl w-full">
+                    <p className="text-sm md:text-base text-[#262626]/80 font-light leading-relaxed">
+                        Sorprende a tus invitados desde el primer clic. Ahorra cientos de euros en imprenta y gestiona las confirmaciones en piloto automático. Un formato más elegante, rentable y ecológico.
+                    </p>
+                </div>
 
+                {/* --- ENLACES A LAS DEMOS DE NETLIFY --- */}
+                <div className="mb-10 w-full">
+                    <p className="text-[10px] font-mono uppercase tracking-widest text-[#262626]/60 mb-4">Ver demos funcionales:</p>
+                    <div className="flex flex-wrap gap-4">
+                        <a 
+                            href="https://rococo-buttercream-5a9d03.netlify.app/" 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 border border-[#262626]/20 px-4 py-2 rounded-full text-xs font-mono uppercase hover:border-[#262626] hover:bg-[#262626]/5 transition-colors"
+                        >
+                            Demo 1: Evento formal <ArrowUpRight size={14} />
+                        </a>
+                        <a 
+                            href="https://radiant-llama-42bb60.netlify.app/" 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 border border-[#262626]/20 px-4 py-2 rounded-full text-xs font-mono uppercase hover:border-[#262626] hover:bg-[#262626]/5 transition-colors"
+                        >
+                            Demo 2: Invitación Boda <ArrowUpRight size={14} />
+                        </a>
+                    </div>
+                </div>
+
+                {/* BOTÓN AL SERVICIO COMPLETO */}
                 <a 
-                    href={mailtoLink} 
+                    href="/invitaciones" 
                     className="inline-flex items-center gap-4 border border-[#262626] px-8 py-4 rounded-full text-[#262626] hover:bg-[#262626] hover:text-[#EAE8E4] transition-all duration-300 group"
                 >
-                    <span className="text-sm font-mono uppercase tracking-widest">Crear mi invitación</span>
+                    <span className="text-sm font-mono uppercase tracking-widest">Ver el servicio completo</span>
                     <MoveRight size={18} className="group-hover:translate-x-2 transition-transform" />
                 </a>
             </div>
