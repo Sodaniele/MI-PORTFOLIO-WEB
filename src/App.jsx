@@ -78,13 +78,11 @@ const ExpertiseWheel = () => {
 
 function App() {
   // --- SISTEMA DE RUTAS SIMPLE ---
-  // Si la URL es /invitaciones, muestra la nueva página de ventas
   const path = window.location.pathname;
   if (path === '/invitaciones') {
     return <Invitaciones />;
   }
 
-  // SI NO, CARGA TU PORTFOLIO NORMAL (Lo de abajo)
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
 
@@ -169,8 +167,6 @@ idea:`;
             >
                 {/* BLOQUE FOTO + TEXTO */}
                 <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center md:ml-auto md:mr-12 max-w-4xl">
-                    
-                    {/* --- FOTO MAS GRANDE --- */}
                     <div className="w-32 h-32 md:w-48 md:h-48 shrink-0 rounded-2xl overflow-hidden border border-[#262626]/10 shadow-lg">
                         <img 
                             src="/sofia.png" 
@@ -178,7 +174,6 @@ idea:`;
                             className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
                         />
                     </div>
-                    {/* ------------------------- */}
 
                     <div className="max-w-lg">
                         <p className="text-lg md:text-xl font-light leading-relaxed text-[#262626]">
@@ -201,7 +196,6 @@ idea:`;
                     </span>
                 </div>
             </motion.div>
-
         </div>
 
         <div className="absolute bottom-6 left-6 md:bottom-12 md:left-20 flex items-center gap-4 text-[#262626]/60">
@@ -212,8 +206,6 @@ idea:`;
 
       {/* --- WORK SECTION --- */}
       <section id="work" className="pt-20 md:pt-32 pb-12 md:pb-16 px-6 md:px-20 max-w-[1600px] mx-auto z-20 relative border-t border-[#262626]/10">
-        
-        {/* PARTE 1: PROYECTO DESTACADO (AccesoBarrio) */}
         <div className="mb-24 md:mb-32">
             <div className="flex items-center gap-2 mb-6">
                 <span className="w-2 h-2 rounded-full bg-[#262626] animate-pulse"></span>
@@ -237,38 +229,29 @@ idea:`;
                            <MapPin className="text-[#262626]" size={20}/>
                            <span className="text-xs font-mono uppercase tracking-widest text-[#262626]/60">Social Impact Web App</span>
                         </div>
-                        
                         <h3 className="text-4xl md:text-8xl font-light text-[#262626] mb-6 md:mb-8 group-hover:underline decoration-1 underline-offset-8 transition-all">
                             AccesoBarrio
                         </h3>
-                        
                         <p className="text-base md:text-xl text-[#262626]/80 font-light leading-relaxed max-w-2xl mb-8 md:mb-10">
                             Una plataforma con geolocalización en tiempo real para facilitar la movilidad urbana. 
-                            Permite a personas con discapacidad encontrar rutas accesibles y barreras arquitectónicas en su entorno.
                         </p>
-                        
                         <div className="flex flex-wrap gap-2 md:gap-3">
-                            {['React', 'Leaflet Maps', 'Geolocation API', 'Node.js', 'Accessibility'].map(tag => (
+                            {['React', 'Leaflet Maps', 'Geolocation API', 'Node.js'].map(tag => (
                                 <span key={tag} className="px-3 py-1 border border-[#262626]/20 rounded-full text-[10px] md:text-xs font-mono uppercase text-[#262626]/70">
                                     {tag}
                                 </span>
                             ))}
                         </div>
                     </div>
-
                     <div className="flex flex-row md:flex-col justify-between items-end">
                         <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#262626] text-[#DBD4D3] flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                              <ArrowUpRight size={32} md:size={40} />
                         </div>
-                        <span className="block text-xs font-mono uppercase tracking-widest text-[#262626]/40 mt-auto">
-                            Visit Live Site
-                        </span>
                     </div>
                 </div>
             </motion.a>
         </div>
 
-        {/* PARTE 2: RESTO DE PROYECTOS (LISTA) */}
         <div className="flex justify-between items-baseline mb-12 border-b border-[#262626]/10 pb-4">
             <h2 className="text-sm font-mono text-[#262626]/60 uppercase tracking-widest">(02) — More Selected Work</h2>
         </div>
@@ -286,16 +269,10 @@ idea:`;
                     <h3 className="text-2xl md:text-4xl font-light text-[#262626] group-hover:translate-x-4 transition-transform duration-300">
                         {proyecto.titulo}
                     </h3>
-                    <p className="mt-2 text-xs md:text-sm text-[#262626]/60 font-mono opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 transform translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 pl-0 md:pl-4">
-                        SEE PROJECT DETAILS
-                    </p>
                 </div>
-                
-                {/* Imagen Preview (Solo Desktop) */}
                 <div className="hidden md:block w-48 h-32 opacity-0 group-hover:opacity-100 transition-all duration-500 absolute right-20 top-1/2 -translate-y-1/2 grayscale group-hover:grayscale-0 pointer-events-none rounded-lg overflow-hidden border border-[#262626]/10 shadow-xl">
                     <img src={proyecto.imagen} alt="" className="w-full h-full object-cover" />
                 </div>
-                
                 <div className="mt-4 md:mt-0 p-3 border border-[#262626]/20 rounded-full text-[#262626] group-hover:bg-[#262626] group-hover:text-[#DBD4D3] transition-all self-end md:self-auto">
                     <ArrowUpRight size={18} />
                 </div>
@@ -304,85 +281,60 @@ idea:`;
         </div>
       </section>
 
-      {/* ======================================================== */}
-      {/* --- NUEVA SECCIÓN: INVITACIONES INTERACTIVAS --- */}
-      {/* ======================================================== */}
+      {/* --- SECCIÓN: INVITACIONES --- */}
       <section id="digital-invites" className="pt-12 md:pt-16 pb-20 md:pb-32 px-6 md:px-20 max-w-[1600px] mx-auto z-20 relative">
-        
         <div className="flex justify-between items-baseline mb-16 md:mb-24">
             <h2 className="text-sm font-mono text-[#262626]/60 uppercase tracking-widest">(03) — Digital Event Experiences</h2>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
-            
-            {/* --- TEXTO Y EXPLICACIÓN --- */}
             <div className="w-full lg:w-1/2 flex flex-col items-start">
                 <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 border border-[#262626]/20 rounded-full bg-[#262626]/5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#262626] animate-pulse"></span>
                     <span className="text-[10px] uppercase tracking-widest font-mono text-[#262626]">Premium Service</span>
                 </div>
-                
                 <h3 className="text-4xl md:text-6xl font-light text-[#262626] mb-8 tracking-tight leading-tight">
                     Redefiniendo la <br className="hidden md:block" />
                     <span className="italic font-medium">invitación tradicional.</span>
                 </h3>
-                
                 <p className="text-lg md:text-xl text-[#262626]/80 font-light leading-relaxed mb-8">
-                    Diseño y desarrollo <span className="font-medium">Bespoke Digital Invitations</span> para bodas y eventos exclusivos. No son simples PDFs o imágenes estáticas, son aplicaciones web interactivas diseñadas con una filosofía <span className="italic">Mobile-First</span>.
+                    Diseño y desarrollo <span className="font-medium">Bespoke Digital Invitations</span> para bodas y eventos exclusivos. 
                 </p>
 
-                {/* --- NUEVO TEXTO PERSUASIVO (Sustituye a la lista) --- */}
                 <div className="mb-10 p-6 bg-[#262626]/5 border border-[#262626]/10 rounded-2xl w-full">
                     <p className="text-sm md:text-base text-[#262626]/80 font-light leading-relaxed">
-                        Sorprende a tus invitados desde el primer clic. Ahorra cientos de euros en imprenta y gestiona las confirmaciones en piloto automático. Un formato más elegante, rentable y ecológico.
+                        Sorprende a tus invitados desde el primer clic. Ahorra cientos de euros en imprenta y gestiona las confirmaciones en piloto automático.
                     </p>
                 </div>
 
-                {/* --- ENLACES A LAS DEMOS DE NETLIFY --- */}
+                {/* --- ENLACES A LAS DEMOS ACTUALIZADOS --- */}
                 <div className="mb-10 w-full">
                     <p className="text-[10px] font-mono uppercase tracking-widest text-[#262626]/60 mb-4">Ver demos funcionales:</p>
                     <div className="flex flex-wrap gap-4">
-                        <a 
-                            href="https://rococo-buttercream-5a9d03.netlify.app/" 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 border border-[#262626]/20 px-4 py-2 rounded-full text-xs font-mono uppercase hover:border-[#262626] hover:bg-[#262626]/5 transition-colors"
-                        >
-                            Demo 1: Evento formal <ArrowUpRight size={14} />
+                        <a href="https://rococo-buttercream-5a9d03.netlify.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border border-[#262626]/20 px-4 py-2 rounded-full text-xs font-mono uppercase hover:border-[#262626] transition-colors">
+                            Demo BODA MINIMALISTA <ArrowUpRight size={14} />
                         </a>
-                        <a 
-                            href="https://radiant-llama-42bb60.netlify.app/" 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 border border-[#262626]/20 px-4 py-2 rounded-full text-xs font-mono uppercase hover:border-[#262626] hover:bg-[#262626]/5 transition-colors"
-                        >
-                            Demo 2: Invitación Boda <ArrowUpRight size={14} />
+                        <a href="https://radiant-llama-42bb60.netlify.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border border-[#262626]/20 px-4 py-2 rounded-full text-xs font-mono uppercase hover:border-[#262626] transition-colors">
+                            DEMO BODA CLÁSICA<ArrowUpRight size={14} />
+                        </a>
+                        <a href="https://musical-arithmetic-749b28.netlify.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border border-[#262626]/20 px-4 py-2 rounded-full text-xs font-mono uppercase hover:border-[#262626] transition-colors">
+                            Demo BABY BLOOM <ArrowUpRight size={14} />
                         </a>
                     </div>
                 </div>
 
-                {/* BOTÓN AL SERVICIO COMPLETO */}
-                <a 
-                    href="/invitaciones" 
-                    className="inline-flex items-center gap-4 border border-[#262626] px-8 py-4 rounded-full text-[#262626] hover:bg-[#262626] hover:text-[#EAE8E4] transition-all duration-300 group"
-                >
+                <a href="/invitaciones" className="inline-flex items-center gap-4 border border-[#262626] px-8 py-4 rounded-full text-[#262626] hover:bg-[#262626] hover:text-[#EAE8E4] transition-all duration-300 group">
                     <span className="text-sm font-mono uppercase tracking-widest">Ver el servicio completo</span>
                     <MoveRight size={18} className="group-hover:translate-x-2 transition-transform" />
                 </a>
             </div>
 
-            {/* --- VIDEO / MOCKUP DEL MÓVIL --- */}
+            {/* --- VIDEO DEL MÓVIL ACTUALIZADO --- */}
             <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end">
-                
-                {/* Marco simulando un iPhone minimalista */}
-                <div className="relative w-[280px] h-[580px] md:w-[320px] md:h-[650px] bg-[#262626] rounded-[2.5rem] p-3 shadow-2xl border border-[#262626]/20 hover:-translate-y-4 transition-transform duration-700">
-                    
-                    {/* El "Notch" o cámara del móvil arriba */}
+                <div className="relative w-[280px] h-[580px] md:w-[320px] md:h-[650px] bg-[#262626] rounded-[2.5rem] p-3 shadow-2xl border border-[#262626]/20 transition-transform duration-700">
                     <div className="absolute top-0 inset-x-0 h-6 flex justify-center mt-4 z-20">
                         <div className="w-20 h-5 bg-[#262626] rounded-full"></div>
                     </div>
-
-                    {/* La Pantalla (donde va el vídeo) */}
                     <div className="w-full h-full bg-[#EAE8E4] rounded-[2rem] overflow-hidden relative">
                         <video 
                             src="/video-invitacion.mp4" 
@@ -394,37 +346,15 @@ idea:`;
                         ></video>
                     </div>
                 </div>
-
-                {/* Elemento decorativo flotante (Para darle un toque "Tech") */}
-                <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="absolute bottom-10 -left-4 md:left-10 bg-[#EAE8E4] p-4 rounded-2xl border border-[#262626]/10 shadow-xl hidden sm:flex items-center gap-4 z-30"
-                >
-                    <div className="w-12 h-12 rounded-full bg-[#262626] flex items-center justify-center text-[#EAE8E4]">
-                        <MapPin size={20} />
-                    </div>
-                    <div>
-                        <p className="text-[10px] font-mono uppercase text-[#262626]/60 tracking-widest">Live Location</p>
-                        <p className="text-sm font-medium text-[#262626]">Finca Los Olivos</p>
-                    </div>
-                </motion.div>
-
             </div>
         </div>
       </section>
-      {/* ======================================================== */}
 
       {/* --- SERVICES SECTION --- */}
       <section id="services" className="py-20 z-20 relative border-t border-[#262626]/10">
         <div className="px-6 md:px-20 max-w-[1600px] mx-auto flex justify-between items-baseline mb-16">
             <h2 className="text-sm font-mono text-[#262626]/60 uppercase tracking-widest">(04) — Expertise</h2>
-            <div className="hidden md:block text-[10px] font-mono text-[#262626]/60 uppercase">
-                Hover to stop
-            </div>
         </div>
-
         <div className="px-4 md:px-20 max-w-[1600px] mx-auto">
             <ExpertiseWheel />
         </div>
@@ -433,55 +363,19 @@ idea:`;
       {/* --- FOOTER --- */}
       <footer id="contact" className="py-20 md:py-32 px-6 md:px-20 bg-[#262626] text-[#DBD4D3]">
          <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
-            
             <div className="flex-1 w-full">
                 <p className="text-[#DBD4D3]/60 font-mono text-sm mb-8 uppercase tracking-widest">¿Creamos algo único?</p>
-                {/* --- AQUÍ ESTÁ EL LINK CON LA PLANTILLA PREDISEÑADA --- */}
-                <a 
-                    href={mailtoLink} 
-                    className="text-[15vw] md:text-[6vw] leading-none font-light tracking-tight text-[#DBD4D3] hover:text-[#DBD4D3]/70 transition-colors block break-words"
-                >
+                <a href={mailtoLink} className="text-[15vw] md:text-[6vw] leading-none font-light tracking-tight text-[#DBD4D3] hover:text-[#DBD4D3]/70 transition-colors block break-words">
                     Hablemos.
                 </a>
             </div>
-
             <div className="flex gap-4 flex-wrap">
-                <a 
-                  href="https://www.instagram.com/proyectoveinticinco" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-12 h-12 rounded-full border border-[#DBD4D3]/20 flex items-center justify-center text-[#DBD4D3] hover:bg-[#DBD4D3] hover:text-[#262626] transition-all duration-300 hover:scale-110"
-                >
-                    <Instagram size={20} />
-                </a>
-                
-                <a 
-                  href="https://github.com/Sodaniele" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-12 h-12 rounded-full border border-[#DBD4D3]/20 flex items-center justify-center text-[#DBD4D3] hover:bg-[#DBD4D3] hover:text-[#262626] transition-all duration-300 hover:scale-110"
-                >
-                    <Github size={20} />
-                </a>
-                
-                <a 
-                  href="https://linkedin.com/in/sodaniele" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-12 h-12 rounded-full border border-[#DBD4D3]/20 flex items-center justify-center text-[#DBD4D3] hover:bg-[#DBD4D3] hover:text-[#262626] transition-all duration-300 hover:scale-110"
-                >
-                    <Linkedin size={20} />
-                </a>
-
-                <a 
-                  href={mailtoLink}
-                  className="w-12 h-12 rounded-full border border-[#DBD4D3]/20 flex items-center justify-center text-[#DBD4D3] hover:bg-[#DBD4D3] hover:text-[#262626] transition-all duration-300 hover:scale-110"
-                >
-                    <Mail size={20} />
-                </a>
+                <a href="https://www.instagram.com/proyectoveinticinco" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-[#DBD4D3]/20 flex items-center justify-center text-[#DBD4D3] hover:bg-[#DBD4D3] hover:text-[#262626] transition-all"><Instagram size={20} /></a>
+                <a href="https://github.com/Sodaniele" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-[#DBD4D3]/20 flex items-center justify-center text-[#DBD4D3] hover:bg-[#DBD4D3] hover:text-[#262626] transition-all"><Github size={20} /></a>
+                <a href="https://linkedin.com/in/sodaniele" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-[#DBD4D3]/20 flex items-center justify-center text-[#DBD4D3] hover:bg-[#DBD4D3] hover:text-[#262626] transition-all"><Linkedin size={20} /></a>
+                <a href={mailtoLink} className="w-12 h-12 rounded-full border border-[#DBD4D3]/20 flex items-center justify-center text-[#DBD4D3] hover:bg-[#DBD4D3] hover:text-[#262626] transition-all"><Mail size={20} /></a>
             </div>
          </div>
-         
          <div className="max-w-[1600px] mx-auto mt-20 pt-8 border-t border-[#DBD4D3]/10 flex flex-col md:flex-row gap-4 justify-between text-[10px] text-[#DBD4D3]/60 uppercase tracking-widest font-mono">
             <p>Madrid, Spain</p>
             <p>© 2025 PROYECTO 25.</p>
